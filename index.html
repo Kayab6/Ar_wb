@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSV Result Validator</title>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.3/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+  <script type="module" src="app.js?v=3"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <p class="eyebrow">Phases 1 + 2</p>
+      <h1>CSV Result Calculator</h1>
+      <p>Upload result files to validate, integrate, and calculate a configurable consolidated leaderboard entirely in your browser.</p>
+    </header>
+
+    <section class="upload-section" aria-labelledby="uploadTitle">
+      <h2 id="uploadTitle">Upload round CSV files</h2>
+      <p class="muted">Choose one CSV file for each round. You can replace a file at any time.</p>
+      <div id="roundUploads" class="round-grid" aria-label="Round CSV uploads"></div>
+    </section>
+
+    <section class="config-card" aria-labelledby="configTitle">
+      <h2 id="configTitle">Scoring configuration</h2>
+      <p class="muted">Ranking is provisional until the configuration is confirmed. Leave a round maximum blank unless using normalized scoring.</p>
+      <div class="config-grid">
+        <label>Method<select id="method"><option value="sum">Sum of scores</option><option value="average">Average of scores</option><option value="weighted">Weighted scores</option><option value="normalized" selected>Normalized scores</option><option value="time">Time-based result</option></select></label>
+        <label>Time tie-break<select id="timeTieBreaker"><option value="none">None</option><option value="lower">Lower time wins</option><option value="higher">Higher time wins</option></select></label>
+        <label>Time direction<select id="timeMode"><option value="none">Not applicable</option><option value="lower">Lower time wins</option><option value="higher">Higher time wins</option></select></label>
+        <label class="confirm-label"><input id="confirmConfig" type="checkbox"> Confirm configuration for official finalized results</label>
+      </div>
+      <div class="round-config" id="roundConfig"></div>
+      <label class="event-title">Event title<input id="eventTitle" type="text" value="Competition Results"></label>
+      <div class="export-actions"><button id="downloadLeaderboard" type="button">Download leaderboard CSV</button><button id="downloadComplete" type="button">Download complete results CSV</button><button id="downloadPdf" type="button">Download final PDF report</button></div>
+      <p id="configStatus" class="status warning">Configuration not confirmed</p>
+    </section>
+
+    <section id="results" class="results" aria-live="polite">
+      <div class="empty-state">
+        <h2>Processing results</h2>
+        <p>Upload a CSV file to see its detected columns, validation summary, and record preview.</p>
+      </div>
+    </section>
+    <section id="leaderboard" class="leaderboard"></section>
+    <section id="teamDetails" class="team-details"></section>
+  </main>
+</body>
+</html>
