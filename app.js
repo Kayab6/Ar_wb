@@ -11,7 +11,7 @@ const leaderboard = document.querySelector("#leaderboard");
 const teamDetails = document.querySelector("#teamDetails");
 
 for (let round = 1; round <= 4; round += 1) {
-  document.querySelector("#roundConfig").insertAdjacentHTML("beforeend", `<label>Round ${round} max<input type="number" min="0" step="any" data-config="maximums" data-round="${round}" placeholder="Optional"></label><label>Weight<input type="number" min="0" step="any" data-config="weights" data-round="${round}" value="1"></label>`);
+  document.querySelector("#roundConfig").insertAdjacentHTML("beforeend", `<fieldset class="round-settings"><legend>Round ${round}</legend><label>Maximum score<input type="number" min="0" step="any" data-config="maximums" data-round="${round}" placeholder="Optional"></label><label>Weight<input type="number" min="0" step="any" data-config="weights" data-round="${round}" value="1"></label></fieldset>`);
 }
 document.querySelector(".config-card").addEventListener("input", updateConfig);
 document.querySelector(".config-card").addEventListener("change", updateConfig);

@@ -34,13 +34,17 @@ h2, h3 { margin-top: 0; }
 .status.warning, .warning-text { color: var(--warning); }
 .results { margin-top: 32px; display: grid; gap: 20px; }
 .config-card { margin-top: 24px; padding: 24px; }
-.config-grid, .round-config { display: flex; flex-wrap: wrap; gap: 14px; align-items: end; }
+.config-grid { display: flex; flex-wrap: wrap; gap: 14px; align-items: end; }
+.round-config { display: grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: 16px; }
 .config-card label { display: grid; gap: 5px; color: var(--muted); font-size: .82rem; font-weight: 600; }
 .config-card select, .config-card input { min-width: 150px; border: 1px solid #fff; border-radius: 0; padding: 8px; background: #000; color: #fff; }
 .confirm-label { min-height: 38px; display: flex !important; flex-direction: row; align-items: center; }
 .confirm-label input { min-width: auto; }
 .round-config { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); }
-.round-config label { grid-template-columns: auto 110px; align-items: center; }
+.round-settings { min-width: 0; margin: 0; padding: 14px; border: 1px solid var(--border); }
+.round-settings legend { padding: 0 6px; font-weight: 700; }
+.round-settings label { display: grid; grid-template-columns: minmax(110px, 1fr) minmax(110px, 1fr); align-items: center; gap: 12px; margin-top: 10px; }
+.round-settings input { width: 100%; min-width: 0; }
 .event-title { margin-top: 18px; max-width: 420px; }
 .event-title input { width: 100%; }
 .export-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
@@ -79,3 +83,4 @@ details pre { max-height: 220px; overflow: auto; background: #000; border: 1px s
 .mapping-form label { display: grid; gap: 5px; color: var(--muted); font-size: .8rem; font-weight: 600; }
 .mapping-form select { min-width: 150px; border: 1px solid #fff; border-radius: 0; padding: 8px; background: #000; color: #fff; }
 @media (max-width: 600px) { .container { width: min(100% - 20px, 1200px); padding-top: 28px; } .result-card { padding: 16px; } }
+@media (max-width: 760px) { .round-config { grid-template-columns: 1fr; } }
